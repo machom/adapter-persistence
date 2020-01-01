@@ -12,12 +12,20 @@
 	
 	<artifactId>adapter-persistence-spring-jdbc</artifactId>
     <packaging>jar</packaging>
-	<name>Mule adapter-persistence-spring-jdbc Application</name>
+	<name>Mule adapter-persistence-spring-jdbc</name>
     <description>adapter-persistence-spring-jdbc</description>
 
-   <properties>
+    <properties>
+    	<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
     </properties>
     
+    <dependencies> 
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>     	
+    </dependencies>
+
  	<build>
 		<plugins>
 			<plugin>
@@ -28,14 +36,21 @@
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-app-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-source-plugin</artifactId>
+  			  <version>${maven-source-plugin.version}</version>
+			  <executions>
+			    <execution>
+			      <id>attach-sources</id>
+			      <goals>
+			        <goal>jar</goal>
+			      </goals>
+			    </execution>
+			  </executions>
+			</plugin>				
 		</plugins>
 	</build>
 
-    <dependencies> 
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>     	
-    </dependencies>
 
 </project>

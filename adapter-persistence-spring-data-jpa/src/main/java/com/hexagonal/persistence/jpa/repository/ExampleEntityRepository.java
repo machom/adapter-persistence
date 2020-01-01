@@ -10,11 +10,11 @@ import com.hexagonal.persistence.jpa.entity.JpaExampleEntity;
 
 @Repository
 public interface ExampleEntityRepository extends JpaRepository<JpaExampleEntity, Integer> {
-	
+
 	/**
 	 * 
-	 * @param entityId
+	 * @param id
 	 * @return
 	 */
-	Optional<JpaExampleEntity> findByEntityId(Integer entityId);
+	Optional<JpaExampleEntity> findById(Integer id);
 }

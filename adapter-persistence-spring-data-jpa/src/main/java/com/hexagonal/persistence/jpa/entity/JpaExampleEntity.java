@@ -1,86 +1,92 @@
 
 package com.hexagonal.persistence.jpa.entity;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import static javax.persistence.GenerationType.IDENTITY;
 
-import java.util.Objects;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.google.common.base.MoreObjects;
-import com.hexagonal.persistence.jpa.ExampleEntity;
-
 @Entity(name = "ExampleEntity")
 @Table(name = "example_entities")
-public final class JpaExampleEntity implements ExampleEntity {
+public final class JpaExampleEntity implements Serializable {
 
 	@Transient
 	private static final long serialVersionUID = 1328776989450853491L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", nullable = false, unique = true)
-	private Integer entityId;
+	private Integer id;
 
 	@Column(name = "name", nullable = false)
-	private String entityName;
+	private String name;
 
 	public JpaExampleEntity() {
 		super();
 	}
 
+	public JpaExampleEntity(Integer id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Override
-	public final boolean equals(final Object obj) {
-		if (this == obj) {
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
 			return true;
-		}
-
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-
-		if (getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
-
-		final JpaExampleEntity other = (JpaExampleEntity) obj;
-		return Objects.equals(entityId, other.entityId);
+		JpaExampleEntity other = (JpaExampleEntity) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
 	}
 
 	@Override
-	public final Integer getId() {
-		return entityId;
-	}
-
-	@Override
-	public final String getName() {
-		return entityName;
-	}
-
-	@Override
-	public final int hashCode() {
-		return Objects.hash(entityId);
-	}
-
-	@Override
-	public final void setId(final Integer identifier) {
-		entityId = checkNotNull(identifier, "Received a null pointer as identifier");
-	}
-
-	@Override
-	public final void setName(final String name) {
-		entityName = checkNotNull(name, "Received a null pointer as name");
-	}
-
-	@Override
-	public final String toString() {
-		return MoreObjects.toStringHelper(this).add("entityId", entityId).toString();
+	public String toString() {
+		return "JpaExampleEntity [id=" + id + ", name=" + name + "]";
 	}
 
 }
