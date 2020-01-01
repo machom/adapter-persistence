@@ -5,28 +5,28 @@
 	<parent>
 		<groupId>com.hexagonal</groupId>
 		<artifactId>adapter-persistence</artifactId>
-	    <version>1.0.0-SNAPSHOT</version>
-    </parent>	
-    
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<artifactId>adapter-persistence-spring-jdbc</artifactId>
-    <packaging>jar</packaging>
+	<packaging>jar</packaging>
 	<name>Mule adapter-persistence-spring-jdbc</name>
-    <description>adapter-persistence-spring-jdbc</description>
+	<description>adapter-persistence-spring-jdbc</description>
 
-    <properties>
-    	<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-    </properties>
-    
-    <dependencies> 
+	<properties>
+		<maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+	</properties>
+
+	<dependencies>
 		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>     	
-    </dependencies>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+	</dependencies>
 
- 	<build>
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -37,18 +37,18 @@
 				<artifactId>mule-app-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-			  <groupId>org.apache.maven.plugins</groupId>
-			  <artifactId>maven-source-plugin</artifactId>
-  			  <version>${maven-source-plugin.version}</version>
-			  <executions>
-			    <execution>
-			      <id>attach-sources</id>
-			      <goals>
-			        <goal>jar</goal>
-			      </goals>
-			    </execution>
-			  </executions>
-			</plugin>				
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven-source-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
