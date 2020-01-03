@@ -14,7 +14,7 @@ import javax.persistence.Transient;
 
 @Entity(name = "ExampleEntity")
 @Table(name = "example_entities")
-public final class JpaExampleEntity implements Serializable {
+public class JpaExampleEntity implements Serializable {
 
 	@Transient
 	private static final long serialVersionUID = 1328776989450853491L;
