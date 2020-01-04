@@ -1,37 +1,21 @@
 
-package com.hexagonal.persistence.jpa.entity;
-
-import static javax.persistence.GenerationType.IDENTITY;
+package com.hexagonal.persistence.jdbc.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+public class ExampleModel implements Serializable {
 
-@Entity(name = "ExampleEntity")
-@Table(name = "example_entities")
-public class JpaExampleEntity implements Serializable {
-
-	@Transient
 	private static final long serialVersionUID = 1328776989450853491L;
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "id", nullable = false, unique = true)
 	private Integer id;
 
-	@Column(name = "name", nullable = false)
 	private String name;
 
-	public JpaExampleEntity() {
+	public ExampleModel() {
 		super();
 	}
 
-	public JpaExampleEntity(Integer id, String name) {
+	public ExampleModel(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -70,7 +54,7 @@ public class JpaExampleEntity implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		JpaExampleEntity other = (JpaExampleEntity) obj;
+		ExampleModel other = (ExampleModel) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -86,7 +70,7 @@ public class JpaExampleEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "JpaExampleEntity [id=" + id + ", name=" + name + "]";
+		return "Example [id=" + id + ", name=" + name + "]";
 	}
 
 }
