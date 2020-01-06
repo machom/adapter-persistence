@@ -9,7 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import com.hexagonal.persistence.jdbc.model.ExampleModel;
 
+import lombok.RequiredArgsConstructor;
+
 @Repository
+@RequiredArgsConstructor
 public class ExampleModelRepositoryImpl implements ExampleModelRepository {
 
 	private static final String QUERY_FIND_BY_ID = "select id, name from example_entities where id = ?";
@@ -18,11 +21,6 @@ public class ExampleModelRepositoryImpl implements ExampleModelRepository {
 			rs.getString("name"));
 
 	private final JdbcTemplate jdbcTemplate;
-
-	public ExampleModelRepositoryImpl(final JdbcTemplate jdbcTemplate) {
-		super();
-		this.jdbcTemplate = jdbcTemplate;
-	}
 
 	@Override
 	public Optional<ExampleModel> findById(Integer id) {
